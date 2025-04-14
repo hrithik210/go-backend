@@ -12,8 +12,8 @@ func main() {
 	config.ConnectDatabase()
 
 	r.GET("/", func(c *gin.Context) {
-		c.JSON(200, gin.H{
-			"message": "hey there",
-		})
+		c.JSON(200, gin.H{"message": "hey there"})
 	})
+
+	r.Run(":3000")
 }
