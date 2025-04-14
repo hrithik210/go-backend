@@ -3,8 +3,6 @@ package models
 import (
 	"time"
 
-	"github/lib/pq"
-
 	"github.com/lib/pq"
 )
 
