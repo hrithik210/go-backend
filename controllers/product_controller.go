@@ -28,3 +28,10 @@ func CreateProducts(c *gin.Context) {
 
 	c.JSON(http.StatusCreated, Product)
 }
+func getAllProducts(c *gin.Context) {
+	var products []models.Product
+
+	config.DB.Find(&products)
+
+	c.JSON(http.StatusOK, products)
+}
