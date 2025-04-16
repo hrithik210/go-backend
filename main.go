@@ -4,6 +4,8 @@ import (
 	"ecommerce-backend/config"
 	"ecommerce-backend/models"
 
+	"ecommerce-backend/routes"
+
 	"github.com/gin-gonic/gin"
 )
 
@@ -14,9 +16,7 @@ func main() {
 
 	config.DB.AutoMigrate(&models.Product{})
 
-	r.GET("/", func(c *gin.Context) {
-		c.JSON(200, gin.H{"message": "hey there"})
-	})
+	routes.ProductRoutes(r)
 
 	r.Run(":3000")
 }
