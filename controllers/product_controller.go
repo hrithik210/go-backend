@@ -28,7 +28,7 @@ func CreateProducts(c *gin.Context) {
 
 	c.JSON(http.StatusCreated, Product)
 }
-func getAllProducts(c *gin.Context) {
+func GetAllProducts(c *gin.Context) {
 	var products []models.Product
 
 	config.DB.Find(&products)
@@ -70,4 +70,18 @@ func UpdateProduct(c *gin.Context) {
 
 	config.DB.Model(&product).Updates(&input)
 	c.JSON(http.StatusOK, product)
+}
+
+func DeleteProduct(c *gin.Context) {
+	var product models.Product
+
+	id := c.Param("id")
+
+	if err := config.DB.First(&product, id); err != nil {
+		c.JSON(http.StatusNotFound, gin.H{"error": "product not found"})
+		return
+	}
+
+	config.DB.Delete(&product)
+	c.JSON(http.StatusAccepted, gin.H{"msg": "product deleted successfully"})
 }
