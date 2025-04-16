@@ -6,6 +6,8 @@ import (
 
 	"ecommerce-backend/routes"
 
+	"fmt"
+
 	"github.com/gin-gonic/gin"
 )
 
@@ -19,4 +21,5 @@ func main() {
 	routes.ProductRoutes(r)
 
 	r.Run(":3000")
+	fmt.Printf("🚀 Server is running at port 3000")
 }
